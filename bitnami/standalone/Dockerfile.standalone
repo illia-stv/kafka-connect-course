@@ -1,0 +1,6 @@
+# Dockerfile.standalone
+FROM debezium/connect:2.5
+
+COPY connect-standalone.properties /etc/kafka/
+COPY file-source.properties /etc/kafka/
+COPY connect-log4j.properties /kafka/config/
