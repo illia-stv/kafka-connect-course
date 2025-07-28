@@ -5,6 +5,7 @@ python3 -m venv venv
 # ----------------------------------------------------------------------------------------
 
 # Activate the virtual environment (manual step, not needed in Makefile rules)
+# → Equivalent: make activate
 source ./venv/bin/activate
 
 # ----------------------------------------------------------------------------------------

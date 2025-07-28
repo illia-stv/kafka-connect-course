@@ -11,10 +11,16 @@ venv:
 	@echo "✅ Virtual environment created."
 
 # ----------------------------------------------------------------------------------------
-# Install required Python packages inside virtual environment
-install: venv
-	source ./venv/bin/activate && pip install kafka-python
-	@echo "✅ Virtual environment activated and dependencies installed inside venv."
+# Activate the virtual environment (manual step, but formalized here)
+activate: venv
+	@echo "✅ To activate the virtual environment, run:"
+	@echo "   source ./venv/bin/activate"
+
+# ----------------------------------------------------------------------------------------
+# Install Python dependencies inside venv (requires manual activation beforehand)
+install:
+	pip install kafka-python
+	@echo "✅ Python dependencies installed."
 
 # ----------------------------------------------------------------------------------------
 # Open interactive Postgres shell inside container
