@@ -32,7 +32,7 @@ services:
     depends_on:
       - kafka
     volumes:
-      - ./plugins:/kafka/connect
+      - ../plugins:/kafka/connect
       - ./output:/output
     environment:
       - BOOTSTRAP_SERVERS=kafka:9092

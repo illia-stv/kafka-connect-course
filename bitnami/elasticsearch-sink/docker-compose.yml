@@ -47,7 +47,7 @@ services:
       - REST_PORT=8083
       - PLUGIN_PATH=/kafka/connect
     volumes:
-      - ./plugins:/kafka/connect
+      - ../plugins:/kafka/connect
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.15.1

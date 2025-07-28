@@ -1,0 +1,3 @@
+FROM confluentinc/cp-kafka-connect:7.5.0
+COPY connect-standalone.properties /etc/kafka/
+COPY file-source.properties /etc/kafka/

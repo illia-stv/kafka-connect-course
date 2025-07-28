@@ -32,7 +32,7 @@ services:
     container_name: kafka-connect-standalone
     volumes:
       - ./data:/data
-      - ./plugins:/kafka/connectors
+      - ../plugins:/kafka/connectors
     command: >
       bash -c "
         /kafka/bin/connect-standalone.sh /etc/kafka/connect-standalone.properties /etc/kafka/file-source.properties

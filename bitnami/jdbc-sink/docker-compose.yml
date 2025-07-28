@@ -32,7 +32,7 @@ services:
     depends_on:
       - kafka
     volumes:
-      - ./plugins:/kafka/connect
+      - ../plugins:/kafka/connect
     environment:
       - BOOTSTRAP_SERVERS=kafka:9092
       - GROUP_ID=connect-cluster
