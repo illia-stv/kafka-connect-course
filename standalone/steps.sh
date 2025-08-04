@@ -1,8 +1,7 @@
 # ----------------------------------------------------------------------------------------
 # ▶ Start Docker containers with rebuild
 # Builds images (if needed) and starts all services defined in the docker-compose.yml file.
-# The "-d" flag runs containers in detached mode.
-docker compose up --build -d
+docker compose up --build 
 
 # ----------------------------------------------------------------------------------------
 # ▶ Access Kafka container shell
