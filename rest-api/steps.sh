@@ -1,4 +1,9 @@
 # ----------------------------------------------------------------------------------------
+# ▶ Start Docker containers with rebuild
+# Builds images (if needed) and starts all services defined in the docker-compose.yml file.
+docker compose up --build 
+
+# ----------------------------------------------------------------------------------------
 # ▶ List all connectors
 # This command retrieves all deployed Kafka Connect connectors.
 curl http://localhost:8083/connectors
@@ -79,3 +84,9 @@ curl http://localhost:8083/connectors
 # ▶ List available connector plugins
 # Displays all available connector plugins that can be used in this Kafka Connect environment.
 curl http://localhost:8083/connector-plugins | jq
+
+# ----------------------------------------------------------------------------------------
+# ▶ Stop and remove Docker containers and volumes
+# Shuts down all running containers and removes their associated volumes.
+docker compose down -v
+# ----------------------------------------------------------------------------------------
