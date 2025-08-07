@@ -21,6 +21,11 @@ curl -X POST http://localhost:8083/connectors \
   }'
 
 # ----------------------------------------------------------------------------------------
+# ▶ List connectors after deletion
+# Confirms that the "file-source" connector was successfully removed.
+curl http://localhost:8083/connectors
+
+# ----------------------------------------------------------------------------------------
 # ▶ Access Kafka container
 # This command opens an interactive shell session inside the running Kafka container.
 # Useful for running Kafka CLI tools such as kafka-console-producer or kafka-console-consumer.
