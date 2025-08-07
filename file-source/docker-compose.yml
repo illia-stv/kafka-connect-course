@@ -47,5 +47,4 @@ services:
       - VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
       - KEY_CONVERTER_SCHEMAS_ENABLE=false
       - VALUE_CONVERTER_SCHEMAS_ENABLE=false
-      - REST_PORT=8083
       - PLUGIN_PATH=/kafka/connect
