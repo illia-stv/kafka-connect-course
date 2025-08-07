@@ -11,12 +11,12 @@ docker compose up --build
 curl -X POST http://localhost:8083/connectors \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "file-source",                  # Unique connector name for the source
+    "name": "file-source",
     "config": {
-      "connector.class": "FileStreamSource", # Connector class for reading files
-      "tasks.max": "1",                      # Number of parallel tasks
-      "file": "/input/input.txt",            # Path of input file inside container
-      "topic": "file-topic"                  # Kafka topic to publish messages
+      "connector.class": "FileStreamSource",
+      "tasks.max": "1",
+      "file": "/input/input.txt",
+      "topic": "file-topic"
     }
   }'
 
