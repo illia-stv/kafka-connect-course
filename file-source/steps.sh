@@ -1,4 +1,9 @@
 # ----------------------------------------------------------------------------------------
+# ▶ Start Docker containers with rebuild
+# Builds images (if needed) and starts all services defined in the docker-compose.yml file.
+docker compose up --build 
+
+# ----------------------------------------------------------------------------------------
 # ▶ Deploy File Source Connector
 # This connector reads data from a file inside the Kafka Connect container (/input/input.txt)
 # and writes each line as a message into the "file-topic" Kafka topic.
@@ -30,3 +35,8 @@ docker exec -it kafka bash
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic file-topic --from-beginning
 
 # ----------------------------------------------------------------------------------------
+# ▶ Stop and remove Docker containers and volumes
+# Shuts down all running containers and removes their associated volumes.
+docker compose down -v
+# ----------------------------------------------------------------------------------------
+
