@@ -16,9 +16,15 @@ pip install kafka-python
 
 # ----------------------------------------------------------------------------------------
 
+# ▶ Start Docker containers with rebuild
+# Builds images (if needed) and starts all services defined in the docker-compose.yml file.
+docker compose up --build 
+
+# ----------------------------------------------------------------------------------------
+
 # Connect to Postgres container shell
 # → Equivalent: make psql
-docker exec -it $(docker ps --filter "name=postgres" --format "{{.Names}}") psql -U kafka -d kafkadb
+docker exec -it postgres psql -U kafka -d kafkadb
 
 # ----------------------------------------------------------------------------------------
 
@@ -29,12 +35,6 @@ CREATE TABLE logs (
   message TEXT,
   timestamp DOUBLE PRECISION
 );
-
-# ----------------------------------------------------------------------------------------
-
-# Produce sample Kafka messages
-# → Equivalent: make produce
-python3 kafka_producer.py
 
 # ----------------------------------------------------------------------------------------
 
@@ -65,6 +65,24 @@ curl -X POST http://localhost:8083/connectors \
 
 # ----------------------------------------------------------------------------------------
 
+# Produce sample Kafka messages
+# → Equivalent: make produce
+python3 kafka_producer.py
+
+# ----------------------------------------------------------------------------------------
+
+# Connect to Postgres container shell
+# → Equivalent: make psql
+docker exec -it postgres psql -U kafka -d kafkadb
+
+# ----------------------------------------------------------------------------------------
+
 # Query data from 'logs' table
 # → Equivalent: make view-logs
 SELECT * FROM logs;
+
+# ----------------------------------------------------------------------------------------
+# ▶ Stop and remove Docker containers and volumes
+# Shuts down all running containers and removes their associated volumes.
+docker compose down -v
+# ----------------------------------------------------------------------------------------
