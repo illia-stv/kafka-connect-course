@@ -2,7 +2,7 @@
 # ▶ Equivalent Makefile command: make up
 
 # Start all Docker services (Kafka, Zookeeper, Kafka Connect, Elasticsearch, etc.)
-docker compose up
+docker compose up --build
 
 # ----------------------------------------------------------------------------------------
 # ▶ Equivalent Makefile command: make venv
@@ -63,3 +63,9 @@ curl -X POST http://localhost:8083/connectors \
 
 # Paste this command:
 GET /logs/_search
+
+# ----------------------------------------------------------------------------------------
+# ▶ Stop and remove Docker containers and volumes
+# Shuts down all running containers and removes their associated volumes.
+docker compose down -v
+# ----------------------------------------------------------------------------------------
