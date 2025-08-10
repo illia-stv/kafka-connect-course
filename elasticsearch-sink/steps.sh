@@ -43,7 +43,7 @@ python3 kafka_producer.py
 curl -X POST http://localhost:8083/connectors \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "elasticsearch-sink-connector",  # Unique connector name
+    "name": "elasticsearch-sink-connector",
     "config": {
       "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
       "tasks.max": "1",
