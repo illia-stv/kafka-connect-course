@@ -1,4 +1,4 @@
-docker compose up
+docker compose up --build
 
 # ----------------------------------------------------------------------------------------
 
@@ -45,18 +45,6 @@ curl -X POST http://localhost:8083/connectors   -H "Content-Type: application/js
 
 # ----------------------------------------------------------------------------------------
 
-python3 kafka_producer.py
-
-# ----------------------------------------------------------------------------------------
-
-kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic logs --from-beginning
-
-# ----------------------------------------------------------------------------------------
-
-curl -X DELETE http://localhost:8083/connectors/logs-file-sink
-
-# ----------------------------------------------------------------------------------------
-
 curl -X POST http://localhost:8083/connectors \
   -H "Content-Type: application/json" \
   -d '{
@@ -79,10 +67,6 @@ curl -X POST http://localhost:8083/connectors \
 
 # ----------------------------------------------------------------------------------------
 
-curl -X DELETE http://localhost:8083/connectors/logs-file-sink-filtered
-
-# ----------------------------------------------------------------------------------------
-
 curl -X POST http://localhost:8083/connectors \
   -H "Content-Type: application/json" \
   -d '{
@@ -102,10 +86,6 @@ curl -X POST http://localhost:8083/connectors \
       "transforms.maskEmail.fields": "email"
     }
   }'
-
-# ----------------------------------------------------------------------------------------
-
-curl -X DELETE http://localhost:8083/connectors/masked-logs-sink
 
 # ----------------------------------------------------------------------------------------
 
@@ -133,8 +113,8 @@ curl -X POST http://localhost:8083/connectors \
 
 # ----------------------------------------------------------------------------------------
 
-curl -X DELETE http://localhost:8083/connectors/logs-timestamp-converted
+deactivate
 
 # ----------------------------------------------------------------------------------------
 
-deactivate
+docker compose down -v
