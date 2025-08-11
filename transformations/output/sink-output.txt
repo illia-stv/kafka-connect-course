@@ -1,0 +1,2 @@
+Struct{level=ERROR,message=Payment failed,timestamp=1.7549275594237545E9}
+Struct{level=INFO,message=Payment processed,timestamp=1.7549280680403872E9}
