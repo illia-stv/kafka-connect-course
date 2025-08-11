@@ -1,3 +1,6 @@
-./confluent
-./elasticsearch-search/elasticsearch
-./error-reporting/elasticsearch
+/confluent
+/elasticsearch-search/elasticsearch
+/elasticsearch-search/venv
+/error-reporting/elasticsearch
+/error-reporting/venv
+/jdbc-sink/venv

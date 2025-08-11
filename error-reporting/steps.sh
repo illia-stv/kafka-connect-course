@@ -22,6 +22,25 @@ docker compose up --build
 
 # ----------------------------------------------------------------------------------------
 
+curl -X POST http://localhost:8083/connectors \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "elasticsearch-sink-connector",
+    "config": {
+      "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+      "tasks.max": "1",
+      "topics": "logs",
+      "connection.url": "http://elasticsearch:9200",
+      "key.ignore": "true",
+      "schema.ignore": "false",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "value.converter.schemas.enable": "true",
+      "behavior.on.null.values": "ignore"
+    }
+  }'
+
+# ----------------------------------------------------------------------------------------
+
 docker exec -it kafka bash
 
 # ----------------------------------------------------------------------------------------
@@ -30,15 +49,23 @@ kafka-console-producer.sh --broker-list kafka:9092 --topic logs
 
 # ----------------------------------------------------------------------------------------
 
-{"id": 1, "message": "valid record"}
-BAD_JSON_LINE
-{"id": 2, "message": "another valid record"}
-
-# ----------------------------------------------------------------------------------------
-
 python3 kafka_producer.py
 
 # ----------------------------------------------------------------------------------------
+
+#  Link to Elasticsearch dashboard: http://localhost:5601/app/dev_tools#/console
+
+# Paste this command:
+GET /logs/_search
+
+# ----------------------------------------------------------------------------------------
+
+# ▶ Delete connector
+# Removes the "elasticsearch-sink-connector" connector from Kafka Connect.
+curl -X DELETE http://localhost:8083/connectors/elasticsearch-sink-connector
+
+# ----------------------------------------------------------------------------------------
+
 
 curl -X POST http://localhost:8083/connectors \
   -H "Content-Type: application/json" \
@@ -64,14 +91,14 @@ curl -X POST http://localhost:8083/connectors \
 
 # ----------------------------------------------------------------------------------------
 
+docker exec -it kafka bash
+
+# ----------------------------------------------------------------------------------------
+
 #  Link to Elasticsearch dashboard: http://localhost:5601/app/dev_tools#/console
 
 # Paste this command:
 GET /logs/_search
-
-# ----------------------------------------------------------------------------------------
-
-docker exec -it kafka-connect cat /output/sink-output.txt
 
 # ----------------------------------------------------------------------------------------
 
